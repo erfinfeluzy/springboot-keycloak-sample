@@ -22,7 +22,6 @@ public class HomeController {
     @GetMapping(path = "/customers")
     public String customers(Principal principal, Model model) {
 
-        model.addAttribute("greeting", "this is customer page");
         model.addAttribute("username", principal.getName());
         
         if (principal instanceof KeycloakPrincipal) {
@@ -34,7 +33,6 @@ public class HomeController {
             model.addAttribute("firstname", accessToken.getGivenName());
             model.addAttribute("lastname", accessToken.getFamilyName());
             model.addAttribute("name", accessToken.getName());
-            
         }
 
         return "customers";
